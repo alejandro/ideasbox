@@ -1,0 +1,29 @@
+.container
+  .row#main
+    header.twelve.columns.last#logo
+      h1 #{sitename}
+    section.twelve.columns.last.center
+      h3 &#1007; #{room}
+  .row#features 
+    section.seven.columns
+      ul 
+        - if (typeof ideas == 'object' && ideas.length >  0) {
+          - ideas.forEach(function(idea){
+            - idea = idea.value;
+            li 
+              h4
+                a(href="#{idea.url || '/'}",title="#{idea.name}") #{idea.name}
+              p 
+                span #{idea.description}
+              p 
+                span #{idea.up}  | 
+                span #{idea.down} 
+              p 
+                span #{idea['created_at']}  
+                | By:
+                span #{idea.author.name}
+          - });
+        - } else {
+          li 
+            h3 NOT_FOUND
+        - }
