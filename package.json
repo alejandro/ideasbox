@@ -2,6 +2,12 @@
   "name" : "ideasbox",
   "version" : "0.0.1",
   "author" : "Kronos",
-  "dependencies": {} ,
+  "dependencies": {
+    "tako":"0.2.x"
+   ,"nano":"1.3.x"
+   ,"jade":"0.20.x"
+
+
+  } ,
   "engines": {">= 0.4.x <0.6.11"}
 }
