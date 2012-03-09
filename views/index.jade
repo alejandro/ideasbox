@@ -1,1 +1,22 @@
-h1 #{name}
+.container
+  .row#main
+    header.twelve.columns.last#logo
+      h1 #{sitename}
+    section.five.columns
+      img(src="http://nodester.com/images/nodesterbw_transparent.png",width="230")
+    section.six.columns.last
+      h3 &#1007; A sandbox of Ideas
+      h4.subheader #{sitename} lets you quickly put together your features request for a given services, previously registered with us. You can upvote, downvote, desqualify and more with your ideas and other peoples ideas. Nothing new, right?
+  .row#features
+    section.five.columns
+      h4 Quick Begin
+      p Add an idea for: #nodester
+      form(action="/new/idea/nodester",method="POST",class="nice")
+        input(type="text",name="idea",class="input-text nice")
+        input(type="submit",value="send",class="button radius blue")
+    section.six.columns.last
+     h4 There is no another step   
+     p
+       strong No mad-science 
+         span  &#9883;, 
+       | just this

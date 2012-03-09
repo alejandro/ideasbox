@@ -2,7 +2,15 @@
 html
   head
     meta(charset="utf8")
-    title Hola
+    meta(name="author",content="#{author}")
+    title #{sitename}
     script(type="text/javascript",src="/socket.io/socket.io.js")
+    link(href="/assets/stylesheets/foundation.css",type="text/css",rel="stylesheet")
+    link(href="/assets/stylesheets/app.css",type="text/css",rel="stylesheet")
 
   body!=body
+    footer.container
+      .row
+        .twelve.columns.center
+          p Made by Alejandro Morales
+      
