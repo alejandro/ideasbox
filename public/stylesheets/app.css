@@ -11,21 +11,47 @@
 
 html ,body {
   background-color:#eee;
+  font-family:'Doppio One';
 }
 header {
-  background: #CCC;
+  background: whitesmoke;
 margin-left: -20px; 
 margin-bottom: 20px;
+border-bottom:1px #CCC solid;
 }
-#main,#features {
+#main {
+  background-color:#FFF;
+}
+#main,#features,#comment {
   border: 1px #CCC solid;
+  box-shadow:1px 1px rgba(255,255,255,0.4);
+}
+#comment {
+  padding-top:30px;
+  background:#FFF ;
+}
+#comment input,#comment textarea {
+  width:100%;
+}
+textarea {
+  overflow: auto;
 }
 header h1 {
   padding:10px 20px 0 30px;
 }
+.off {
+  display: none;
+}
+header h1:before {
+  content: url('/assets/logo.png');
+  padding: 10px;
+}
+#desc {
+  font-family:"Helvetica","Arial";
+}
 #features {
     
-  background-color:#fff;
+  background-color:whitesmoke;
   width:100%;
   height:100%;
 }
@@ -36,6 +62,49 @@ footer {margin-top:20px;}
 .center p {text-align:center;}
 #img {
   background-image:url(https://secure-b.vimeocdn.com/ts/262/006/262006220_640.jpg);
+}
+#box {
+  color:#2568F7;
+}
+#box:hover {
+  color:#444;
+}
+.center {
+  text-align:center;
+}
+h1 a {
+  color:#444;
+}
+.like {
+  padding:0 10px 0 10px;
+}
+#form {
+  text-align:center;
+  background: white;
+  padding: 0 !important;
+  border-top: 1px #CCC solid;
+  padding-top: 20px;
+}
+#title {
+  background: white;
+  margin: 0;
+  padding: 10px 0;
+}
+#content {
+  background: whiteSmoke;
+padding: 20px 0 20px 20px;
+position: static;
+box-shadow: 1px 1px #CCC, -1px -1px #CCC;
+margin-bottom: 40px;
+}
+#logo {
+  margin-bottom:0;
+}
+[class*="column"] + [class*="column"]:last-child {
+float: auto !important;
+}
+#idea > a {
+  padding:40px;
 }
 /* -----------------------------------------
    Shared Styles

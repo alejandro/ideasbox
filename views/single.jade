@@ -1,0 +1,25 @@
+.container
+  .row#main
+    header.twelve.columns.last#logo
+      h1 
+        a(href="/") ideas
+          span#box Box
+    section.twelve.columns.last.center#title
+      h3 &#1007; 
+        a(href="/#{room}") #{room}
+    section.nine.columns.last.centered#content
+      h4#idea
+        a(href="/#{room}/#{idea.url}") #{idea.name}
+      hr
+      #description!= idea.description
+      hr
+      p 
+        span #{((new Date(idea['created_at'])).toGMTString() ).substr(0,17) }  
+        | By:
+        span #{idea.author.name}
+        span#votes
+          a(href="javascript:like(1)",title="#{idea.up} Likes")
+            img(src="/assets/images/heart.png",width="15",class="like")  
+          a(href="javascript:dislike(0)",title="#{idea.down} dislikes")
+            img(src="/assets/images/minus.png",width="15")
+    section.twelve.columns.last

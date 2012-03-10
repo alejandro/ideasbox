@@ -1,29 +1,52 @@
 .container
   .row#main
     header.twelve.columns.last#logo
-      h1 #{sitename}
+      h1 
+        a(href="/") ideas
+          span#box Box
     section.twelve.columns.last.center
       h3 &#1007; #{room}
   .row#features 
     section.seven.columns
       ul 
+        - var loop = 1;
         - if (typeof ideas == 'object' && ideas.length >  0) {
           - ideas.forEach(function(idea){
             - idea = idea.value;
             li 
-              h4
-                a(href="#{idea.url || '/'}",title="#{idea.name}") #{idea.name}
+              h4 #{loop}. 
+                a(href="/#{room}/#{idea.url || ''}",title="#{idea.name}") #{idea.name}        
               p 
-                span #{idea.description}
+                span #{idea.description.substr(0,200)}...
               p 
-                span #{idea.up}  | 
-                span #{idea.down} 
-              p 
-                span #{idea['created_at']}  
+                span #{((new Date(idea['created_at'])).toGMTString() ).substr(0,17) }  
                 | By:
                 span #{idea.author.name}
+                span#votes
+                  a(href="javascript:like(#{loop})",title="#{idea.up} Likes")
+                    img(src="/assets/images/heart.png",width="15",class="like")  
+                  a(href="javascript:dislike(#{loop})",title="#{idea.down} dislikes")
+                    img(src="/assets/images/minus.png",width="15")
+
+            - ++loop; 
           - });
         - } else {
           li 
             h3 NOT_FOUND
         - }
+    
+  .row#comment
+    section.five.columns.centered#form
+      // YEAH I USE BRs all over the place #lazyweb
+      img(src="/assets/images/loading.gif",class="off",id="loader")
+      br
+      h4#msg Add your awesome feature request 
+      br
+      form(action="/#{room}/new",method="POST",class="nice",id="idea")
+        input(type="text",name="name",placeholder="name your idea",class="input-text",required)
+        textarea(name="description",placeholder="tell us more about your idea",class="input-text",cols="30", rows="5",required)
+        input(type="text",name="user[name]",placeholder="your name",class="input-text",required)
+        input(type="text",name="user[email]", placeholder="your email (we won't store it) just for the avatar",class="input-text",required)
+
+        input(type="hidden",name="user[from]",value="#{room}")
+        input(type="submit",class="button black radius",value="add Idea",id="send")
