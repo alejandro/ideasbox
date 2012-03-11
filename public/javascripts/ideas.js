@@ -8,7 +8,7 @@ $(document).ready(function(){
     ;
 
     submit.on('click', function(e){
-      e.preventDefault()
+      e.preventDefault();
       loader.removeClass('off')
       msg.textContent = 'Posting...'
       form.addClass('off')
@@ -24,10 +24,11 @@ $(document).ready(function(){
               break;
             case '422':
             case 422:
-              comment.html('<h4> Error</h4><span> Idea name already Exists</span>')
+              var msg = resp.msg ? resp.msg:'Idea name already Exists'
+              comment.html('<div class="center"><h4> Error</h4><span> '+msg+'</span></div>')
               break;
             default:
-              comment.html('<h4> 500 Internal Server Error</h4><span> Try again in a little</span>')
+              comment.html('<div class="center"><h4> 500 Internal Server Error</h4><span> Try again in a little</span></div>')
               break;
           }
         }

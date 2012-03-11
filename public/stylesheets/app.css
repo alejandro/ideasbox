@@ -95,11 +95,11 @@ h1 a {
   padding: 10px 0;
 }
 #content {
-  background: whiteSmoke;
-padding: 20px 0 20px 20px;
-position: static;
-box-shadow: 1px 1px #CCC, -1px -1px #CCC;
-margin-bottom: 40px;
+  background: whitesmoke;
+  padding: 20px 0 20px 20px;
+  position: static;
+  box-shadow: 1px 1px #CCC, -1px -1px #CCC;
+  margin-bottom: 40px;
 }
 #logo {
   margin-bottom:0;
@@ -109,6 +109,10 @@ float: auto !important;
 }
 #idea > a {
   padding:40px;
+}
+#description{
+  white-space:pre;
+  
 }
 /* -----------------------------------------
    Shared Styles
