@@ -1,0 +1,14 @@
+.container
+  .row#main
+    header.twelve.columns.last#logo
+      h1 
+        a(href="/") ideas
+          span#box Box
+    .twelve.columns.last.center#log
+      h3!= code
+      p!= info
+      - if (code === 404) {
+        p Do you want to register this page? 
+          | clic 
+          a(href="/#{referer.replace('#','')}/create") Here
+      - }
