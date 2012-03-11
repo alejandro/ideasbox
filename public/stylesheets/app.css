@@ -111,7 +111,8 @@ float: auto !important;
   padding:40px;
 }
 #description{
-  white-space:pre;
+  white-space:pre-line;
+  display: block;
   
 }
 /* -----------------------------------------

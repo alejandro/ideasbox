@@ -9,6 +9,22 @@
   .row#features 
     section.seven.columns
       ul 
+        - var elipsis = function(str){
+          - if (str.charAt(200)!==' '){
+            - var loop = 200
+            - var elip = str.substring(0,200)
+            - while (str.charAt(loop)) {
+            -    if (str.charAt(loop)==' '){
+            -      elip = str.substring(0,loop) + '...';
+            -      break;
+            -    }
+            -   --loop;
+            - }
+            - return elip;
+          - } else {
+            -  return str.substring(0,200) + '...';
+          - }
+        - };
         - var loop = 1;
         - if (typeof ideas == 'object' && ideas.length >  0) {
           - ideas.forEach(function(idea){
@@ -17,7 +33,7 @@
               h4 #{loop}. 
                 a(href="/#{room}/#{idea.url || ''}",title="#{idea.name}") #{idea.name}        
               p 
-                span #{idea.description.substr(0,200)}...
+                span #{elipsis(idea.description)}
               p 
                 span #{((new Date(idea['created_at'])).toGMTString() ).substr(0,17) }  
                 | By:
