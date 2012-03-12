@@ -22,4 +22,13 @@
             img(src="/assets/images/heart.png",width="15",class="like")  
           a(href="javascript:dislike(0)",title="#{idea.down} dislikes")
             img(src="/assets/images/minus.png",width="15")
-    section.twelve.columns.last
+    section.twelve.columns#disqus_thread
+
+script(type="text/javascript")
+  var disqus_shortname = 'ideasBox';
+  (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+noscript Please enable JavaScript to view the comments 
