@@ -3,17 +3,21 @@ $(document).ready(function(){
     , form = $('#idea')
     , comment = $('#comment')
     , submit = $('#send')
+    , description = $('[name="description"]')
     , successIdea = '<p> You can see your idea at:<a href="<%= url%>",title="Go to"><%= url%></a></p>'
     , msg = $('#msg')
     ;
+    description.val('');
 
     submit.on('click', function(e){
       e.preventDefault();
       loader.removeClass('off')
       msg.textContent = 'Posting...'
       form.addClass('off')
-      var data = serialize()
-      $.post('/'+data.room + '/new',data,function(resp,status){
+      var action ='new'
+      if (window.location.pathname.search('/create')!==-1) action = 'create'
+      var data = serialize(action);
+      $.post('/'+data.room + '/'+action,data,function(resp,status){
         if (resp && status == 'success'){
           var self = resp;
           switch (resp.statusCode){
@@ -37,8 +41,8 @@ $(document).ready(function(){
     function getValues (name){
       return $('[name="'+name+'"]')
     }
-    window.serialize = function(){
-      return {
+    window.serialize = function(action){
+      var serial = {
           name: getValues('name').val()
         , description : getValues('description').val()
         , author:{
@@ -47,6 +51,15 @@ $(document).ready(function(){
             , email: getValues('user[email]').val()
           }
         , room : getValues('user[from]').val()
+      }
+      switch (action){
+        case "create":
+            serial.author.password =getValues('user[password]').val()
+            return serial;
+          break;
+        default:
+          return serial;
+        break;
       }
     }
 

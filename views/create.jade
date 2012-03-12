@@ -1,0 +1,21 @@
+.container
+  .row#main
+    header.twelve.columns.last#logo
+      h1
+        a(href="/") ideas
+          span#box Box
+  .row#comment
+    section.five.columns.centered#form
+      // YEAH I USE BRs all over the place #lazyweb
+      img(src="/assets/images/loading.gif",class="off",id="loader")
+      br
+      h4#msg Add your awesome room  
+      br
+      form(action="/#{room}/create",method="POST",class="nice",id="idea")
+        input(type="text",name="name",placeholder="the name of your room",class="input-text",required)
+        textarea(name="description",placeholder="tell us more about your room",cols="30", rows="5",required)
+        input(type="text",name="user[name]",placeholder="your name",class="input-text",required)
+        input(type="text",name="user[email]", placeholder="your email (we won't store it) just for the avatar",class="input-text",required)
+        input(type="password",name="user[password]",placeholder="add your secret p4ssw0r2 (this is not recovered)",class="input-text")
+        input(type="hidden",name="user[from]",value="#{room}")
+        input(type="submit",class="button black radius",value="add Idea",id="send")

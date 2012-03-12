@@ -6,6 +6,12 @@
           span#box Box
     section.twelve.columns.last.center
       h3 &#1007; #{room}
+        - ideas.forEach(function(idea){
+          - idea = idea.value;
+          - if (idea && idea.channel) {
+            p!= idea.description
+          - }
+        - });
   .row#features 
     section.seven.columns
       ul 
@@ -29,21 +35,23 @@
         - if (typeof ideas == 'object' && ideas.length >  0) {
           - ideas.forEach(function(idea){
             - idea = idea.value;
-            li 
-              h4 #{loop}. 
-                a(href="/#{room}/#{idea.url || ''}",title="#{idea.name}") #{idea.name}        
-              p 
-                span #{elipsis(idea.description)}
-              p 
-                span #{((new Date(idea['created_at'])).toGMTString() ).substr(0,17) }  
-                | By:
-                span #{idea.author.name}
-                span#votes
-                  a(href="javascript:like(#{loop})",title="#{idea.up} Likes")
-                    img(src="/assets/images/heart.png",width="15",class="like")  
-                  a(href="javascript:dislike(#{loop})",title="#{idea.down} dislikes")
-                    img(src="/assets/images/minus.png",width="15")
-
+            - var STATE = idea.channel ? idea.channel : false;
+            - if (!STATE){
+              li 
+                h4 #{loop}. 
+                  a(href="/#{room}/#{idea.url || ''}",title="#{idea.name}") #{idea.name}        
+                p 
+                  span #{elipsis(idea.description)}
+                p 
+                  span #{((new Date(idea['created_at'])).toGMTString() ).substr(0,17) }  
+                  | By:
+                  span #{idea.author.name}
+                  span#votes
+                    a(href="javascript:like(#{loop})",title="#{idea.up} Likes")
+                      img(src="/assets/images/heart.png",width="15",class="like")  
+                    a(href="javascript:dislike(#{loop})",title="#{idea.down} dislikes")
+                      img(src="/assets/images/minus.png",width="15")
+            - }
             - ++loop; 
           - });
         - } else {
