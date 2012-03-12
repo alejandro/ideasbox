@@ -16,7 +16,7 @@
       form(action="/ideasBox/new/",method="POST",class="nice")
         input(type="hidden",name="user",value="frontpage")
         input(type="hidden",name="room",value="ideasBox")
-        input(type="text",name="idea",class="input-text nice")
+        textarea(type="text",name="description",class="input-text nice",placeholder='Add your idea')
         input(type="submit",value="send",class="button radius blue")
     section.six.columns.last
      h4 There is no another step   
