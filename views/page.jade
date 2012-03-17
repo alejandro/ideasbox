@@ -1,9 +1,5 @@
-.container
-  .row#main
-    header.twelve.columns.last#logo
-      h1 
-        a(href="/") ideas
-          span#box Box
+.container#rows
+  .row.art#main
     section.twelve.columns.last.center
       h3 &#1007; #{room}
         - ideas.forEach(function(idea){
@@ -12,8 +8,8 @@
             p!= idea.description
           - }
         - });
-  .row#features 
-    section.seven.columns
+  .art.row#features 
+    section.seven.columns.centered
       ul 
         - var elipsis = function(str){
           - if (str.charAt(200)!==' '){
@@ -36,7 +32,7 @@
           - ideas.forEach(function(idea){
             - idea = idea.value;
             - var STATE = idea.channel ? idea.channel : false;
-            - if (!STATE){
+            - if (!STATE && loop<11){
               li 
                 h4 #{loop}. 
                   a(href="/#{room}/#{idea.url || ''}",title="#{idea.name}") #{idea.name}        
@@ -51,7 +47,7 @@
                       img(src="/assets/images/heart.png",width="15",class="like")  
                     a(href="javascript:dislike(#{loop})",title="#{idea.down} dislikes")
                       img(src="/assets/images/minus.png",width="15")
-            - }
+            - } else { loop = --loop}
             - ++loop; 
           - });
         - } else {
@@ -59,7 +55,7 @@
             h3 NOT_FOUND
         - }
     
-  .row#comment
+  .art.row#comment
     section.five.columns.centered#form
       // YEAH I USE BRs all over the place #lazyweb
       img(src="/assets/images/loading.gif",class="off",id="loader")

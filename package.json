@@ -3,10 +3,11 @@
   "version" : "0.0.1",
   "author" : "Kronos",
   "dependencies": {
-    "tako":"0.2.x"
-   ,"nano":"1.3.x"
-   ,"jade":"0.20.x"
-   ,"request":"2.9.x"
+     "tako":"0.2.x"
+   , "nano":"1.3.x"
+   , "jade":"0.20.x"
+   , "request":"2.9.x"
+   , "eventemmiter2":"*"
   } ,
   "engines": ">= 0.4.x <0.6.11",
   "node":"0.6.12"

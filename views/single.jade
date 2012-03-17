@@ -1,9 +1,5 @@
-.container
-  .row#main
-    header.twelve.columns.last#logo
-      h1 
-        a(href="/") ideas
-          span#box Box
+.container#wrapper
+  .row.art#main
     section.twelve.columns.last.center#title
       h3 &#1007; 
         a(href="/#{room}") #{room}
@@ -23,7 +19,7 @@
           a(href="javascript:dislike(0)",title="#{idea.down} dislikes")
             img(src="/assets/images/minus.png",width="15")
     section.twelve.columns#disqus_thread
-
+ 
 script(type="text/javascript")
   var disqus_shortname = 'ideasBox';
   (function() {
